@@ -42,6 +42,20 @@ public class PictureTester
  
   }
    
+  public static void testMirrorHorizontalToptoBot()
+  {
+      Picture caterpillar = new Picture("caterpillar.jpg");
+      caterpillar.explore();
+      caterpillar.mirrorHorizontal();
+      caterpillar.explore();
+  }
+  public static void testMirrorDiagonal()
+  {
+      Picture beach = new Picture("beach.jpg");
+      beach.explore();
+      beach.mirrorDiagonal();
+      beach.explore();
+  }
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
@@ -49,6 +63,13 @@ public class PictureTester
     temple.explore();
     temple.mirrorTemple();
     temple.explore();
+  }
+  public static void testMirrorArms()
+  {
+      Picture snowman = new Picture("snowman.jpg");
+      snowman.explore();
+      snowman.mirrorArms();
+      snowman.explore();
   }
   
   /** Method to test the collage method */
@@ -108,8 +129,10 @@ public class PictureTester
     testMirrorVertical();
     testMirrorVerticalRighttoLeft();
     testMirrorHorizontal();
-    //testMirrorTemple();
-    //testMirrorArms();
+    testMirrorHorizontalToptoBot();
+    testMirrorDiagonal();
+    testMirrorTemple();
+    testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();

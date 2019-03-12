@@ -216,13 +216,42 @@ public class Picture extends SimplePicture
               topPixel.setColor(botPixel.getColor());
           }
       }
-      
-      
-      
-      
-      
+         
   }
-  /** Mirror just part of a picture of a temple */
+  public void mirrorHorizontalToptoBot()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel topPixel;
+      Pixel botPixel;
+      int length = pixels.length;
+      for(int row = 0; row<length/2;row++)
+      {
+          for (int col=0; col<pixels[0].length; col++)
+          {
+              topPixel = pixels[row][col];
+              botPixel = pixels [length-1-row][col];
+              botPixel.setColor(topPixel.getColor());
+          }
+      }
+  }
+  public void mirrorDiagonal()
+  {
+      Pixel[][] pixels = this.getPixels2D();
+      Pixel origin;
+      Pixel image;
+      int end = Math.min(pixels.length,pixels[0].length);
+      for(int i=0;i<end;i++)
+      { for (int j=0;j<i;j++)
+          {
+              origin = pixels[i][j];
+              image = pixels[j][i];
+             
+             image.setColor(origin.getColor());
+             
+          }
+      }
+  }
+  /* Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {
     int mirrorPoint = 276;
@@ -242,8 +271,14 @@ public class Picture extends SimplePicture
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+        count++;
       }
+      System.out.println(count);
     }
+  }
+  public void mirrorArms()
+  {
+      
   }
   
   /** copy from the passed fromPic to the
@@ -254,7 +289,7 @@ public class Picture extends SimplePicture
     * @param startCol the start col to copy to
     */
   public void copy(Picture fromPic, 
-                 int startRow, int startCol)
+        int startRow, int startCol)
   {
     Pixel fromPixel = null;
     Pixel toPixel = null;
